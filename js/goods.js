@@ -21,7 +21,8 @@ var CONTENTS = ['молоко', 'сливки', 'вода', 'пищевой кр
 
 var getContents = function () {
   var randomContents = [];
-  for (var i = 0; i < randomInteger(1, CONTENTS.length); i++) {
+  var contentsAmount = randomInteger(1, CONTENTS.length);
+  for (var i = 0; i < contentsAmount; i++) {
     randomContents.push(getArrayElement(CONTENTS));
   }
   return randomContents;
@@ -113,10 +114,39 @@ var renderCard = function (element) {
   return cardElement;
 };
 
+// выводим в каталог
+
 var catalog = getCards(26);
-var similarListElement = userDialog.querySelector('.catalog__cards');
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < catalog.length; i++) {
   fragment.appendChild(renderCard(catalog[i]));
 }
-similarListElement.appendChild(fragment);
+userDialog.appendChild(fragment);
+
+// товары в корзине
+
+var orderCardTemplate = document.querySelector('#card-order')
+    .content
+    .querySelector('.goods_card');
+
+var renderOrderCard = function (element) {
+  var orderElement = orderCardTemplate.cloneNode(true);
+
+  orderElement.querySelector('.card-order__title').textContent = element.name;
+  orderElement.querySelector('.card-order__img').src = element.picture;
+  orderElement.querySelector('.card-order__price').textContent = element.price + '₽';
+  orderElement.querySelector('.card-order__count').value = element.orderAmount;
+  return orderElement;
+};
+
+var orderCatalog = getCards(3);
+var orderContainer = document.querySelector('.goods__cards');
+
+var orderFragment = document.createDocumentFragment();
+for (var j = 0; j < orderCatalog.length; j++) {
+  fragment.appendChild(renderOrderCard(orderCatalog[j]));
+}
+orderContainer.appendChild(orderFragment);
+
+document.querySelector('.goods__cards').classList.remove('goods__cards--empty');
+document.querySelector('.goods__card-empty').classList.add('visually-hidden');

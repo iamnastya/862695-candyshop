@@ -29,26 +29,25 @@ var getContents = function () {
 
 // функция, которая засовывает объекты в массив
 
-var card = {
-  name: getArrayElement(NAMES),
-  picture: getArrayElement(PICTURES),
-  amount: randomInteger(0, 20),
-  price: randomInteger(100, 1500),
-  weight: randomInteger(30, 300),
-  rating: {
-    value: randomInteger(0, 5),
-    number: randomInteger(10, 900)
-  },
-  nutritionFacts: {
-    sugar: Math.random() >= 0.5,
-    energy: randomInteger(70, 500),
-    contents: getContents()
-  }
-};
-
 var getCards = function (cardsAmount) {
   var cards = [];
   for (var i = 0; i < cardsAmount; i++) {
+    var card = {
+      name: getArrayElement(NAMES),
+      picture: getArrayElement(PICTURES),
+      amount: randomInteger(0, 20),
+      price: randomInteger(100, 1500),
+      weight: randomInteger(30, 300),
+      rating: {
+        value: randomInteger(0, 5),
+        number: randomInteger(10, 900)
+      },
+      nutritionFacts: {
+        sugar: Math.random() >= 0.5,
+        energy: randomInteger(70, 500),
+        contents: getContents()
+      }
+    };
     cards.push(card);
   }
   return cards;
@@ -114,5 +113,10 @@ var renderCard = function (element) {
   return cardElement;
 };
 
+var catalog = getCards(26);
+var similarListElement = userDialog.querySelector('.catalog__cards');
 var fragment = document.createDocumentFragment();
-
+for (var i = 0; i < catalog.length; i++) {
+  fragment.appendChild(renderCard(catalog[i]));
+}
+similarListElement.appendChild(fragment);

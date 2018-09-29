@@ -135,7 +135,7 @@ var renderOrderCard = function (element) {
   orderElement.querySelector('.card-order__title').textContent = element.name;
   orderElement.querySelector('.card-order__img').src = element.picture;
   orderElement.querySelector('.card-order__price').textContent = element.price + '₽';
-  orderElement.querySelector('.card-order__count').value = element.orderAmount;
+  orderElement.querySelector('.card-order__count').value = element.amount;
   return orderElement;
 };
 
@@ -144,7 +144,7 @@ var orderContainer = document.querySelector('.goods__cards');
 
 var orderFragment = document.createDocumentFragment();
 for (var j = 0; j < orderCatalog.length; j++) {
-  fragment.appendChild(renderOrderCard(orderCatalog[j]));
+  orderFragment.appendChild(renderOrderCard(orderCatalog[j]));
 }
 orderContainer.appendChild(orderFragment);
 

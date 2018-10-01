@@ -2,7 +2,7 @@
 
 // функция рандома и выбора произвольного значения из массива
 
-function randomInteger(min, max) {
+function getRandomInteger(min, max) {
   var rand = min + Math.random() * (max + 1 - min);
   rand = Math.floor(rand);
   return rand;
@@ -21,7 +21,7 @@ var CONTENTS = ['молоко', 'сливки', 'вода', 'пищевой кр
 
 var getContents = function () {
   var randomContents = [];
-  var contentsAmount = randomInteger(1, CONTENTS.length);
+  var contentsAmount = getRandomInteger(1, CONTENTS.length);
   for (var i = 0; i < contentsAmount; i++) {
     randomContents.push(getArrayElement(CONTENTS));
   }
@@ -38,16 +38,16 @@ var getCards = function (cardsAmount) {
     var card = {
       name: getArrayElement(NAMES),
       picture: getArrayElement(PICTURES),
-      amount: randomInteger(0, 20),
-      price: randomInteger(100, 1500),
-      weight: randomInteger(30, 300),
+      amount: getRandomInteger(0, 20),
+      price: getRandomInteger(100, 1500),
+      weight: getRandomInteger(30, 300),
       rating: {
-        value: randomInteger(0, 5),
-        number: randomInteger(10, 900)
+        value: getRandomInteger(0, 5),
+        number: getRandomInteger(10, 900)
       },
       nutritionFacts: {
         sugar: Math.random() >= 0.5,
-        energy: randomInteger(70, 500),
+        energy: getRandomInteger(70, 500),
         contents: getContents()
       }
     };

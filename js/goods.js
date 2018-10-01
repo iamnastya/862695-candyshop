@@ -25,8 +25,10 @@ var getContents = function () {
   for (var i = 0; i < contentsAmount; i++) {
     randomContents.push(getArrayElement(CONTENTS));
   }
-  return randomContents;
+  var joinedContents = randomContents.join(', ');
+  return joinedContents;
 };
+
 
 // функция, которая засовывает объекты в массив
 
@@ -104,11 +106,7 @@ var renderCard = function (element) {
 
   cardElement.querySelector('.card__img').src = element.picture;
 
-  if (element.nutritionFacts.sugar) {
-    cardElement.querySelector('.card__characteristic').textContent = 'Содержит сахар';
-  } else {
-    cardElement.querySelector('.card__characteristic').textContent = 'Без сахара';
-  }
+  cardElement.querySelector('.card__characteristic').textContent = element.nutritionFacts.sugar ? 'Содержит сахар' : 'Без сахара';
   cardElement.querySelector('.card__composition-list').textContent = element.contents;
 
   return cardElement;

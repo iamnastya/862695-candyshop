@@ -151,16 +151,18 @@ document.querySelector('.goods__card-empty').classList.add('visually-hidden');
 
 // добавление товара в избранное
 
-var addToFavorite = document.querySelector('.card__btn-favorite');
-var removeFromFavorite = document.querySelector('card__btn-favorite--selected');
+var addToFavoriteButton = document.querySelector('.card__btn-favorite');
+var removeFromFavoriteButton = document.querySelector('card__btn-favorite--selected');
 
-addToFavorite.addEventListener('click', function () {
-  if (addToFavorite) {
-    addToFavorite.classList.toggle('card__btn-favorite--selected');
-  } else if (removeFromFavorite) {
-    addToFavorite.classList.toggle('.card__btn-favorite');
+var onButtonClick = function () {
+  if (addToFavoriteButton) {
+    addToFavoriteButton.classList.toggle('card__btn-favorite--selected');
+  } else if (removeFromFavoriteButton) {
+    addToFavoriteButton.classList.toggle('.card__btn-favorite');
   }
-});
+};
+
+addToFavoriteButton.addEventListener('click', onButtonClick);
 
 // Добавление выбранного товара в корзину и управление товаром в корзине
 

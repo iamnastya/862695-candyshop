@@ -151,8 +151,8 @@ document.querySelector('.goods__card-empty').classList.add('visually-hidden');
 
 // добавление товара в избранное
 
-var addToFavorite = document.querySelectorA('.card__btn-favorite');
-var removeFromFavorite = document.querySelectorA('card__btn-favorite--selected');
+var addToFavorite = document.querySelector('.card__btn-favorite');
+var removeFromFavorite = document.querySelector('card__btn-favorite--selected');
 
 addToFavorite.addEventListener('click', function () {
   if (addToFavorite) {

@@ -148,3 +148,20 @@ orderContainer.appendChild(orderFragment);
 
 document.querySelector('.goods__cards').classList.remove('goods__cards--empty');
 document.querySelector('.goods__card-empty').classList.add('visually-hidden');
+
+// добавление товара в избранное
+
+var addToFavorite = document.querySelectorA('.card__btn-favorite');
+var removeFromFavorite = document.querySelectorA('card__btn-favorite--selected');
+
+addToFavorite.addEventListener('click', function () {
+  if (addToFavorite) {
+    addToFavorite.classList.toggle('card__btn-favorite--selected');
+  } else if (removeFromFavorite) {
+    addToFavorite.classList.toggle('.card__btn-favorite');
+  }
+});
+
+// Добавление выбранного товара в корзину и управление товаром в корзине
+
+
